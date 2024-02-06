@@ -33,7 +33,6 @@ class SuggestedStepSection extends StatelessWidget {
               SingleSuggestionCard(
                 stepData: item,
                 onTap: () {
-                  print("clicked");
                   //TODO: Handle what happens when clicked on [item] suggestion step!
                 },
               ),
@@ -59,6 +58,16 @@ class SingleSuggestionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget iconWidget = SvgAssetIcon(
+      stepData.iconPath,
+      size: 28,
+    );
+    if (stepData.stepCount != null && stepData.stepCount != 0) {
+      iconWidget = Badge(
+        label: Text("${stepData.stepCount}"),
+        child: iconWidget,
+      );
+    }
     return LimitedBox(
       maxHeight: 100,
       child: AspectRatio(
@@ -78,10 +87,7 @@ class SingleSuggestionCard extends StatelessWidget {
               padding: all16,
               child: Row(
                 children: [
-                  SvgAssetIcon(
-                    stepData.iconPath,
-                    size: 28,
-                  ),
+                  iconWidget,
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(

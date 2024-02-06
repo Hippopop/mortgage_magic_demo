@@ -11,6 +11,24 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       home: const HomePage(),
       title: 'Mortgage Magic Demo',
+      builder: (context, child) {
+        /* 
+            This step was taken consciously. And it's sole purpose was to make sure that, the app is always pixel perfect
+            with the provided figma design. And with the awareness that it's just a demo UI. So this won't hurt 
+            accessibility or the inclusiveness of the app.
+            *(It still feels crime tho. 😑)        
+        */
+        final mediaQuery = MediaQuery.of(context);
+        return MediaQuery(
+          data: mediaQuery.copyWith(
+            textScaler: mediaQuery.textScaler.clamp(
+              maxScaleFactor: 1,
+              minScaleFactor: 1,
+            ),
+          ),
+          child: child ?? const SizedBox.shrink(),
+        );
+      },
       debugShowCheckedModeBanner: false,
     );
   }

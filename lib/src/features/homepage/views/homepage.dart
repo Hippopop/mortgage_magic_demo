@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
           currentPageIndex = value;
         }),
         controller: pageController,
+        physics: const NeverScrollableScrollPhysics(),
         children: const [
           DashboardScreen(),
           EmptyPage(

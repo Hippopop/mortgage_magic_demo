@@ -75,6 +75,7 @@ class DashboardController {
 
   final suggestionSteps = [
     SuggestedStepData(
+      stepCount: 5,
       title: "Action required",
       description:
           "Check required info, e.g. E-ID, credit report, client agreement, etc.",

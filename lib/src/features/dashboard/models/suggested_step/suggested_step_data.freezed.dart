@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SuggestedStepData {
+  int? get stepCount => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get iconPath => throw _privateConstructorUsedError;
@@ -31,7 +32,8 @@ abstract class $SuggestedStepDataCopyWith<$Res> {
           SuggestedStepData value, $Res Function(SuggestedStepData) then) =
       _$SuggestedStepDataCopyWithImpl<$Res, SuggestedStepData>;
   @useResult
-  $Res call({String title, String description, String iconPath});
+  $Res call(
+      {int? stepCount, String title, String description, String iconPath});
 }
 
 /// @nodoc
@@ -47,11 +49,16 @@ class _$SuggestedStepDataCopyWithImpl<$Res, $Val extends SuggestedStepData>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? stepCount = freezed,
     Object? title = null,
     Object? description = null,
     Object? iconPath = null,
   }) {
     return _then(_value.copyWith(
+      stepCount: freezed == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -76,7 +83,8 @@ abstract class _$$SuggestedStepDataImplCopyWith<$Res>
       __$$SuggestedStepDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String description, String iconPath});
+  $Res call(
+      {int? stepCount, String title, String description, String iconPath});
 }
 
 /// @nodoc
@@ -90,11 +98,16 @@ class __$$SuggestedStepDataImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? stepCount = freezed,
     Object? title = null,
     Object? description = null,
     Object? iconPath = null,
   }) {
     return _then(_$SuggestedStepDataImpl(
+      stepCount: freezed == stepCount
+          ? _value.stepCount
+          : stepCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -115,8 +128,13 @@ class __$$SuggestedStepDataImplCopyWithImpl<$Res>
 
 class _$SuggestedStepDataImpl implements _SuggestedStepData {
   const _$SuggestedStepDataImpl(
-      {required this.title, required this.description, required this.iconPath});
+      {this.stepCount,
+      required this.title,
+      required this.description,
+      required this.iconPath});
 
+  @override
+  final int? stepCount;
   @override
   final String title;
   @override
@@ -126,7 +144,7 @@ class _$SuggestedStepDataImpl implements _SuggestedStepData {
 
   @override
   String toString() {
-    return 'SuggestedStepData(title: $title, description: $description, iconPath: $iconPath)';
+    return 'SuggestedStepData(stepCount: $stepCount, title: $title, description: $description, iconPath: $iconPath)';
   }
 
   @override
@@ -134,6 +152,8 @@ class _$SuggestedStepDataImpl implements _SuggestedStepData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuggestedStepDataImpl &&
+            (identical(other.stepCount, stepCount) ||
+                other.stepCount == stepCount) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -142,7 +162,8 @@ class _$SuggestedStepDataImpl implements _SuggestedStepData {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, iconPath);
+  int get hashCode =>
+      Object.hash(runtimeType, stepCount, title, description, iconPath);
 
   @JsonKey(ignore: true)
   @override
@@ -154,10 +175,13 @@ class _$SuggestedStepDataImpl implements _SuggestedStepData {
 
 abstract class _SuggestedStepData implements SuggestedStepData {
   const factory _SuggestedStepData(
-      {required final String title,
+      {final int? stepCount,
+      required final String title,
       required final String description,
       required final String iconPath}) = _$SuggestedStepDataImpl;
 
+  @override
+  int? get stepCount;
   @override
   String get title;
   @override
